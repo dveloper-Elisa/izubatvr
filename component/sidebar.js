@@ -7,9 +7,14 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import tw from "twrnc";
 
 const Sidebar = ({ closeSidebar }) => {
+  const navigation = useNavigation();
+  const navigateTv = () => {
+    navigation.navigate("TV");
+  };
   return (
     <ScrollView
       contentContainerStyle={tw`relative h-full flex flex-col w-full bg-black p-4`}
@@ -29,7 +34,10 @@ const Sidebar = ({ closeSidebar }) => {
 
       <View style={tw`flex flex-col gap-4`}>
         <View style={tw`border-b border-gray-600 pb-4`}>
-          <Text style={tw`text-white mb-3 border-b-1 font-bold`}>
+          <Text
+            onPress={navigateTv}
+            style={tw`text-white mb-3 border-b-1 font-bold`}
+          >
             Watch Izuba TV
           </Text>
           <Text style={tw`text-white mb-3 border-b-1 font-bold`}>

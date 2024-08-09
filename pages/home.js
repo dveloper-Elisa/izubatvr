@@ -32,9 +32,9 @@ const Home = () => {
   ];
 
   return (
-    <View style={tw`mb-5`}>
+    <View style={tw``}>
       <View
-        style={tw`flex flex-row justify-between items-center px-2 mt-5 bg-black`}
+        style={tw`flex flex-row justify-between items-center px-2 bg-black`}
       >
         <View style={tw`w-fit h-fit flex flex-row items-center py-2`}>
           <Image
