@@ -3,6 +3,8 @@ import { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome.js";
 import News from "../component/news.js";
 import Sidebar from "../component/sidebar.js";
+import Footer from "./footer.js";
+
 import tw from "twrnc";
 
 const Home = () => {
@@ -32,7 +34,7 @@ const Home = () => {
   ];
 
   return (
-    <View style={tw``}>
+    <View style={tw`flex flex-col`}>
       <View
         style={tw`flex flex-row justify-between items-center px-2 bg-black`}
       >
@@ -100,6 +102,8 @@ const Home = () => {
           })}
         </View>
       </ScrollView>
+
+      <Footer />
     </View>
   );
 };

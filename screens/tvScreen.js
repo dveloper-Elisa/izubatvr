@@ -1,14 +1,14 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { Video } from "expo-av";
-import videoFile from "../assets/video.mp4";
 import tw from "twrnc";
+import imageFile from "../assets/video.mp4";
 
 const Tvscreen = () => {
   return (
     <View>
       <Video
-        source={videoFile}
+        source={imageFile}
         useNativeControls
         style={tw`w-full h-60`}
         resizeMode="contain"

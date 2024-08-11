@@ -8,12 +8,22 @@ import {
   ImageBackground,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { A } from "@expo/html-elements";
 import tw from "twrnc";
 
 const Sidebar = ({ closeSidebar }) => {
   const navigation = useNavigation();
   const navigateTv = () => {
     navigation.navigate("TV");
+  };
+  const navigateRadio = () => {
+    navigation.navigate("Radio");
+  };
+  const navigateNews = () => {
+    navigation.navigate("News");
+  };
+  const navigateEducation = () => {
+    navigation.navigate("Education");
   };
   return (
     <ScrollView
@@ -40,11 +50,22 @@ const Sidebar = ({ closeSidebar }) => {
           >
             Watch Izuba TV
           </Text>
-          <Text style={tw`text-white mb-3 border-b-1 font-bold`}>
+          <Text
+            style={tw`text-white mb-3 border-b-1 font-bold`}
+            onPress={navigateRadio}
+          >
             Listen Izuba Radio
           </Text>
-          <Text style={tw`text-white mb-3 border-b-1 font-bold`}>News</Text>
-          <Text style={tw`text-white mb-3 border-b-1 font-bold`}>
+          <Text
+            style={tw`text-white mb-3 border-b-1 font-bold`}
+            onPress={navigateNews}
+          >
+            News
+          </Text>
+          <Text
+            style={tw`text-white mb-3 border-b-1 font-bold`}
+            onPress={navigateEducation}
+          >
             Education
           </Text>
           <Text style={tw`text-white mb-3 border-b-1 font-bold`}>Sports</Text>
@@ -53,10 +74,18 @@ const Sidebar = ({ closeSidebar }) => {
           <Text style={tw`text-blue-800 mb-3 border-b-1 font-bold`}>
             Quick links
           </Text>
-          <Text style={tw`text-white mb-3 border-b-1 font-bold`}>About us</Text>
-          <Text style={tw`text-white mb-3 border-b-1 font-bold`}>
+          <A
+            href="https://www.izubaradiotv.rw/about-us-168"
+            style={tw`text-white mb-3 border-b-1 font-bold`}
+          >
+            About us
+          </A>
+          <A
+            href="https://izubaradiotv.rw/"
+            style={tw`text-white mb-3 border-b-1 font-bold`}
+          >
             Our Website
-          </Text>
+          </A>
         </View>
       </View>
     </ScrollView>
