@@ -2,21 +2,22 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Video } from "expo-av";
 import tw from "twrnc";
-import imageFile from "../assets/video.mp4";
 
 const Tvscreen = () => {
   return (
     <View>
       <View style={tw`h-70 w-full`}>
         <Video
-          source={require("../assets/video.mp4")}
-          useNativeControls
-          style={tw`w-full h-60`}
-          resizeMode="contain"
-          shouldPlay={true}
-          onError={(error) => {
-            console.log("Error playing video:", error);
+          source={{
+            uri: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
           }}
+          style={tw`h-70 w-full`}
+          controls={true}
+          resizeMode="cover"
+          hideShutterView={true}
+          useNativeControls
+          isLooping
+          shouldPlay
         />
       </View>
 
