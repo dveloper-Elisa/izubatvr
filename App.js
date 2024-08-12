@@ -8,6 +8,7 @@ import Tvscreen from "./screens/tvScreen.js";
 import RadioScreen from "./screens/radioScreen.js";
 import NewsPage from "./screens/news.js";
 import Education from "./screens/education.js";
+import Sports from "./screens/sports.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ export default function App() {
         <Stack.Screen name="Radio" component={RadioScreen} />
         <Stack.Screen name="News" component={NewsPage} />
         <Stack.Screen name="Education" component={Education} />
+        <Stack.Screen name="Sports" component={Sports} />
       </Stack.Navigator>
 
       <Footer />

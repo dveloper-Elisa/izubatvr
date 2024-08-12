@@ -1,21 +1,28 @@
-import { View, Image, Text, ScrollView } from "react-native";
-import { useState } from "react";
+import {
+  View,
+  Image,
+  Text,
+  ScrollView,
+  Animated,
+  Easing,
+  Dimensions,
+} from "react-native";
+import { useState, useEffect, useRef } from "react";
 import Icon from "react-native-vector-icons/FontAwesome.js";
 import News from "../component/news.js";
 import Sidebar from "../component/sidebar.js";
 import Footer from "./footer.js";
-
 import tw from "twrnc";
 
 const Home = () => {
   const [viewSidebar, setViewSidebar] = useState(false);
   const imageSource = [
     require("../assets/bnews.jpg"),
-    require("../assets/radio.jpg"),
+    require("../assets/sports/2.jpeg"),
     require("../assets/rt.jpg"),
-    require("../assets/tv.jpg"),
+    require("../assets/sports/3.jpeg"),
     require("../assets/world.jpg"),
-    require("../assets/live.jpg"),
+    require("../assets/sports/new play.jpeg"),
     require("../assets/rt.jpg"),
     require("../assets/bnews.jpg"),
     require("../assets/radio.jpg"),
@@ -32,6 +39,25 @@ const Home = () => {
     "Tyaza limited yatangiye ubushoramari muri Radio and TV izuba",
     "Nyuma y'amatora abaturage bishimiye ibyavuyemo",
   ];
+
+  const { width, height } = Dimensions.get("window");
+  const animatedValue = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const animations = imageSource.map((_, index) =>
+      Animated.sequence([
+        Animated.delay(index * 2000),
+        Animated.timing(animatedValue, {
+          toValue: -index * width,
+          duration: 1000,
+          easing: Easing.circle,
+          useNativeDriver: true,
+        }),
+      ])
+    );
+
+    Animated.loop(Animated.sequence(animations)).start();
+  }, [animatedValue]);
 
   return (
     <View style={tw`flex flex-col`}>
@@ -73,33 +99,43 @@ const Home = () => {
 
       {viewSidebar && <Sidebar closeSidebar={() => setViewSidebar(false)} />}
       <ScrollView contentContainerStyle={tw``}>
-        <View style={tw`flex flex-col gap-1 w-full border justify-center`}>
-          <Image
-            source={require("../assets/live.jpg")}
-            style={tw`w-full h-70`}
-          />
+        <View
+          id="animation"
+          style={tw`flex flex-col gap-1 w-full border justify-center overflow-hidden`}
+        >
+          <Animated.View
+            style={[
+              tw`flex flex-row`,
+              { transform: [{ translateX: animatedValue }] },
+            ]}
+          >
+            {imageSource.map((src, index) => (
+              <Image
+                key={index}
+                source={src}
+                style={{ width, height: height / 4 }}
+              />
+            ))}
+          </Animated.View>
           <View
             style={tw`flex flex-col border bg-black rounded-md items-center justify-center`}
           >
             <Image
               source={require("../assets/radio1.jpg")}
-              style={tw`w-full h-30`}
+              style={{ width, height: height / 8 }}
             />
             <Text style={tw`text-white`}>Listen Radio Izuba</Text>
           </View>
         </View>
         <View style={tw`mb-40`}>
           <Text style={tw`w-full bg-slate-100 border-b-2 mt-2 p-2 font-bold`}>
-            {" "}
             Latest News
           </Text>
-          {titles.map((title, index) => {
-            return (
-              <View key={index}>
-                <News src={imageSource[index]} title={title} />
-              </View>
-            );
-          })}
+          {titles.map((title, index) => (
+            <View key={index}>
+              <News src={imageSource[index]} title={title} />
+            </View>
+          ))}
         </View>
       </ScrollView>
 

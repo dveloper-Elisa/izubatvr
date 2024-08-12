@@ -25,6 +25,9 @@ const Sidebar = ({ closeSidebar }) => {
   const navigateEducation = () => {
     navigation.navigate("Education");
   };
+  const navigateSports = () => {
+    navigation.navigate("Sports");
+  };
   return (
     <ScrollView
       contentContainerStyle={tw`relative h-full flex flex-col w-full bg-black p-4`}
@@ -68,7 +71,12 @@ const Sidebar = ({ closeSidebar }) => {
           >
             Education
           </Text>
-          <Text style={tw`text-white mb-3 border-b-1 font-bold`}>Sports</Text>
+          <Text
+            style={tw`text-white mb-3 border-b-1 font-bold`}
+            onPress={navigateSports}
+          >
+            Sports
+          </Text>
         </View>
         <View>
           <Text style={tw`text-blue-800 mb-3 border-b-1 font-bold`}>
