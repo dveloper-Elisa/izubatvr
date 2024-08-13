@@ -17,11 +17,11 @@ const Education = () => {
   ];
 
   const titles = [
-    "Nyagatare Abahinzi bari kuhira imyaka kubera izuba ryishi",
-    "Bugesera Abaturage begerejwe amazi meza",
+    "Abanyeshuri bo muri Kaminuza bahawe Mudasobwa",
+    "Abarezi bavuga ko Ireme ry'uburezi Ryamaze gupfa mu mashuri",
     "Ngoma Abaturage Bahawe Gase y'ibiri 12 namashyiga",
-    "Nyuma y'amatora abaturage bishimiye ibyavuyemo",
-    "Tyaza limited yatangiye kubona abaterankunda",
+    "Abanyeshuri baremze ko mudasobwa bahawe bazazibyaza umusaruri",
+    "Tyaza limited yagiranye amasezerano na Abato Organization",
     "Nyuma y'amatora abaturage bishimiye ibyavuyemo",
     "Nyuma y'uko izuba ribaye ryishi abaturage bahendwa n'inyama",
     "Tyaza limited yatangiye ubushoramari muri Radio and TV izuba",

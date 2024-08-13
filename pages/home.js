@@ -6,16 +6,26 @@ import {
   Animated,
   Easing,
   Dimensions,
+  Alert,
 } from "react-native";
 import { useState, useEffect, useRef } from "react";
+import { TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome.js";
 import News from "../component/news.js";
 import Sidebar from "../component/sidebar.js";
 import Footer from "./footer.js";
+import { useNavigation } from "@react-navigation/native";
 import tw from "twrnc";
 
 const Home = () => {
   const [viewSidebar, setViewSidebar] = useState(false);
+  const navigation = useNavigation();
+  const navigateTv = () => {
+    navigation.navigate("TV");
+  };
+  const navigateRadio = () => {
+    navigation.navigate("Radio");
+  };
   const imageSource = [
     require("../assets/bnews.jpg"),
     require("../assets/sports/2.jpeg"),
@@ -113,18 +123,38 @@ const Home = () => {
               <Image
                 key={index}
                 source={src}
-                style={{ width, height: height / 4 }}
+                style={{ width, height: height / 3 }}
               />
             ))}
           </Animated.View>
+
+          <View style={tw`flex flex-row gap-1 w-full items-center justify-center`}>
+          <TouchableOpacity 
+          onPress={navigateRadio}
+          >
           <View
-            style={tw`flex flex-col border bg-black rounded-md items-center justify-center`}
+            style={tw`flex flex-col border bg-black rounded-sm items-center`}
           >
             <Image
-              source={require("../assets/radio1.jpg")}
-              style={{ width, height: height / 8 }}
+              source={require("../assets/radio.jpg")}
+              style={{ width:width/2.1, height: height / 10 }}
             />
             <Text style={tw`text-white`}>Listen Radio Izuba</Text>
+          </View>
+          </TouchableOpacity>
+          <TouchableOpacity 
+          onPress={navigateTv}
+          >
+          <View 
+            style={tw`flex flex-col border bg-black rounded-sm items-center `}
+          >
+            <Image
+              source={require("../assets/tv.jpg")}
+              style={{ width:width/2.1, height: height / 10 }}
+            />
+            <Text style={tw`text-white`}>Watch Izuba TV</Text>
+          </View>
+          </TouchableOpacity>
           </View>
         </View>
         <View style={tw`mb-40`}>
