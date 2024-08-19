@@ -12,6 +12,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 const RadioScreen = () => {
   const [sound, setSound] = useState();
+  const [isplaying, setIsePlaying] = useState(true);
 
   async function playSound() {
     console.log("Loading Sound");
@@ -19,9 +20,8 @@ const RadioScreen = () => {
       require("../assets/Hello.mp3")
     );
     setSound(sound);
-
-    console.log("Playing Sound");
-    await sound.playAsync();
+    console.log("playing sound");
+    isplaying ? await sound.playAsync() : await sound.stopAsync();
   }
 
   return (
@@ -59,8 +59,8 @@ const RadioScreen = () => {
           onPress={playSound}
           style={tw`flex flex-row gap-2 bg-slate-300 items-center p-2 justify-between`}
         >
+          <Icon name="microphone" size={20} color="brown" />
           <View style={tw`flex flex-row gap-5 items-center`}>
-            <Icon name="microphone" size={30} color="brown" />
             <View style={tw`flex flex-col gap-2`}>
               <Text style={tw`text-blue-800 font-bold`}>
                 Ntabwoba bwibihe humura
@@ -69,7 +69,25 @@ const RadioScreen = () => {
             </View>
           </View>
 
-          <Icon name="play" size={20} color="brown" />
+          {isplaying ? (
+            <Icon
+              name="play"
+              size={20}
+              onPress={() => {
+                setIsePlaying(false);
+              }}
+              color="brown"
+            />
+          ) : (
+            <Icon
+              name="pause"
+              size={20}
+              onPress={() => {
+                setIsePlaying(true);
+              }}
+              color="brown"
+            />
+          )}
         </TouchableOpacity>
       </View>
     </View>

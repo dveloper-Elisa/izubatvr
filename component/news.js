@@ -11,7 +11,7 @@ const News = ({ src, title }) => {
       </View>
       <View>
         <Text style={tw`text-blue-800 flex flex-wrap w-48`}>{title}</Text>
-        <Text style={tw`font-2`}>3hrs</Text>
+        <Text style={tw`text-2`}>3hrs</Text>
       </View>
     </View>
   );
