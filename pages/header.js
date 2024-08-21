@@ -3,6 +3,7 @@ import { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import tw from "twrnc";
 import Sidebar from "../component/sidebar.js";
+import Footer from "./footer.js";
 
 const Header = () => {
   const [viewSidebar, setViewSidebar] = useState(false);
@@ -32,6 +33,7 @@ const Header = () => {
           }}
         />
       </View>
+      <Footer />
     </View>
   );
 };

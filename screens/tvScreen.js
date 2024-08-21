@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Video } from "expo-av";
 import tw from "twrnc";
+import Footer from "../pages/footer";
 
 const Tvscreen = () => {
   return (
@@ -27,6 +28,7 @@ const Tvscreen = () => {
         TV News
       </Text>
       <Text style={tw`text-center`}>Mu baturage rwagati</Text>
+      <Footer />
     </View>
   );
 };

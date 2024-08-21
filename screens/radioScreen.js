@@ -6,22 +6,38 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
-import { Video, Audio } from "expo-av";
+import { Audio } from "expo-av";
 import tw from "twrnc";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Footer from "../pages/footer";
 
 const RadioScreen = () => {
-  const [sound, setSound] = useState();
-  const [isplaying, setIsePlaying] = useState(true);
+  const [sound, setSound] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   async function playSound() {
-    console.log("Loading Sound");
-    const { sound } = await Audio.Sound.createAsync(
-      require("../assets/Hello.mp3")
-    );
-    setSound(sound);
-    console.log("playing sound");
-    isplaying ? await sound.playAsync() : await sound.stopAsync();
+    if (sound) {
+      //   // If the sound is already playing, pause it
+      if (isPlaying) {
+        console.log("Pausing sound");
+        await sound.pauseAsync();
+        setIsPlaying(false);
+      } else {
+        console.log("Playing sound");
+        await sound.playAsync();
+        setIsPlaying(true);
+      }
+    } else {
+      // Load and play sound for the first time
+      console.log("Loading sound");
+      const { sound } = await Audio.Sound.createAsync({
+        uri: "https://stream.zeno.fm/1bw3cmzh2v8uv",
+      });
+      // setSound(sound);
+      console.log("Playing sound");
+      await sound.playAsync();
+      // setIsPlaying(true);
+    }
   }
 
   return (
@@ -30,10 +46,8 @@ const RadioScreen = () => {
         <View style={tw`flex flex-col justify-between items-center mb-4`}>
           <Image
             source={require("../assets/logo.png")}
-            useNativeControls
             style={tw`w-full h-60`}
             resizeMode="contain"
-            shouldPlay
           />
           <Text style={tw`text-center text-white font-bold `}>
             Mu baturage rwagati
@@ -54,6 +68,7 @@ const RadioScreen = () => {
           About
         </Text>
       </View>
+
       <View style={tw`mt-2`}>
         <TouchableOpacity
           onPress={playSound}
@@ -62,34 +77,15 @@ const RadioScreen = () => {
           <Icon name="microphone" size={20} color="brown" />
           <View style={tw`flex flex-row gap-5 items-center`}>
             <View style={tw`flex flex-col gap-2`}>
-              <Text style={tw`text-blue-800 font-bold`}>
-                Ntabwoba bwibihe humura
-              </Text>
+              <Text style={tw`text-blue-800 font-bold`}>Izuba Radio</Text>
               <Text style={tw`text-slate-500 font-bold`}>1hr</Text>
             </View>
           </View>
 
-          {isplaying ? (
-            <Icon
-              name="play"
-              size={20}
-              onPress={() => {
-                setIsePlaying(false);
-              }}
-              color="brown"
-            />
-          ) : (
-            <Icon
-              name="pause"
-              size={20}
-              onPress={() => {
-                setIsePlaying(true);
-              }}
-              color="brown"
-            />
-          )}
+          <Icon name={isPlaying ? "pause" : "play"} size={20} color="brown" />
         </TouchableOpacity>
       </View>
+      <Footer />
     </View>
   );
 };

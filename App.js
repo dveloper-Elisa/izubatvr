@@ -23,8 +23,6 @@ export default function App() {
         <Stack.Screen name="Education" component={Education} />
         <Stack.Screen name="Sports" component={Sports} />
       </Stack.Navigator>
-
-      <Footer />
     </NavigationContainer>
   );
 }

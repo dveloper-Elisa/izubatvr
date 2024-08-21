@@ -2,6 +2,7 @@ import { View, Image, Text, ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import News from "../component/news.js";
 import tw from "twrnc";
+import Footer from "../pages/footer.js";
 
 const NewsPage = () => {
   const imageSource = [
@@ -45,6 +46,7 @@ const NewsPage = () => {
           })}
         </ScrollView>
       </View>
+      <Footer />
     </View>
   );
 };

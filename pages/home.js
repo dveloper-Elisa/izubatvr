@@ -128,33 +128,31 @@ const Home = () => {
             ))}
           </Animated.View>
 
-          <View style={tw`flex flex-row gap-1 w-full items-center justify-center`}>
-          <TouchableOpacity 
-          onPress={navigateRadio}
-          >
           <View
-            style={tw`flex flex-col border bg-black rounded-sm items-center`}
+            style={tw`flex flex-row gap-1 w-full items-center justify-center`}
           >
-            <Image
-              source={require("../assets/radio.jpg")}
-              style={{ width:width/2.1, height: height / 10 }}
-            />
-            <Text style={tw`text-white`}>Listen Radio Izuba</Text>
-          </View>
-          </TouchableOpacity>
-          <TouchableOpacity 
-          onPress={navigateTv}
-          >
-          <View 
-            style={tw`flex flex-col border bg-black rounded-sm items-center `}
-          >
-            <Image
-              source={require("../assets/tv.jpg")}
-              style={{ width:width/2.1, height: height / 10 }}
-            />
-            <Text style={tw`text-white`}>Watch Izuba TV</Text>
-          </View>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={navigateRadio}>
+              <View
+                style={tw`flex flex-col border bg-black rounded-sm items-center`}
+              >
+                <Image
+                  source={require("../assets/radio.jpg")}
+                  style={{ width: width / 2.1, height: height / 10 }}
+                />
+                <Text style={tw`text-white`}>Listen Radio Izuba</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={navigateTv}>
+              <View
+                style={tw`flex flex-col border bg-black rounded-sm items-center `}
+              >
+                <Image
+                  source={require("../assets/tv.jpg")}
+                  style={{ width: width / 2.1, height: height / 10 }}
+                />
+                <Text style={tw`text-white`}>Watch Izuba TV</Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
         <View style={tw`mb-40`}>
