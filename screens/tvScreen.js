@@ -10,7 +10,7 @@ const Tvscreen = () => {
       <View style={tw`h-70 w-full`}>
         <Video
           source={{
-            uri: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            uri: "https://5caf24a595d94.streamlock.net:1937/trnnwwmfgf/trnnwwmfgf/playlist.",
           }}
           style={tw`h-70 w-full`}
           controls={true}
@@ -18,7 +18,7 @@ const Tvscreen = () => {
           hideShutterView={true}
           useNativeControls
           isLooping
-          shouldPlay
+          shouldPlay={false}
         />
       </View>
 
